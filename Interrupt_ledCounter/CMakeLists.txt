@@ -50,8 +50,7 @@ pico_generate_pio_header(Interrupt_ledCounter ${CMAKE_CURRENT_LIST_DIR}/Interrup
 # Add the standard library to the build
 target_link_libraries(Interrupt_ledCounter
 pico_stdlib
-hardware_pio
-pico_bootrom)
+hardware_pio)
 
 # Add the standard include files to the build
 target_include_directories(Interrupt_ledCounter PRIVATE
