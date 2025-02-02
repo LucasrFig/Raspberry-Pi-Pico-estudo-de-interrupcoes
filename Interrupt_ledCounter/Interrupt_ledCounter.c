@@ -99,23 +99,23 @@ static void gpio_irq_handler(uint gpio,uint32_t events){
     // Verifica se passou tempo suficiente desde o último evento
 
     if (current_time - last_time > 200000){ // 200 ms de debouncing
+
         last_time = current_time;
+
         if(gpio == BUT_A){
-            if(count<9){
-                count++;
-                printf("count: %d\n",count);
-                print_number(count,pio,sm);
-            }
+            if(count<9) count++; else count=0;
+            printf("count: %d\n",count);
+            print_number(count,pio,sm);
         }
+
         if(gpio == BUT_B){
-            if(count>0){
-                count--;
-                printf("count: %d\n",count);
-                print_number(count,pio,sm);
-            }
+            if(count>0) count--; else count = 9;
+            printf("count: %d\n",count);
+            print_number(count,pio,sm);
         }
         a++;
     }
+    
     if(gpio == BUT_JSTICK){
         printf("Reiniciando a placa em modo de gravação...\n");
         print_number(10,pio,sm);
